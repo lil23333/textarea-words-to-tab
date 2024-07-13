@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>mrBin</title>
+<style>
+body {
+background-color : #5F9EA0;
+}
+div {
+border: 1px solid #333;
+box-shadow: 8px 5px 8px;
+heigth : 30px;
+width  : 50px;
+backgroung-color : #F7F8A0;
+}
+.color1 {
+background-color : #DC143C;
+}
+
+.color2 {
+background-color : #2F4F4F;
+}
+.hidden {
+display : none;
+}
+
+table {
+border-collapse: collapse;
+border : 1 px solid grey;
+}
+
+td {
+padding: 10px 20px;
+border : 1px solid grey;
+background-color : #F0F8FF;
+}
+
+</style>
+
+</head>
+
+<body>
+<button id = 'btn1'>find out</button>
+<textarea id = 'elem'></textarea>
+<p></p>
+
+
+
+
+
+
+<script>
+let elem = document.querySelector('#elem');
+let btn = document.querySelector('#btn1');
+let p = document.querySelector('p');
+
+btn.addEventListener('click',()=> {
+    let arr = elem.value.split(' ');
+    let result = {};
+    arr.forEach(function(a) {
+    if (result[a] != undefined)
+        ++result[a];
+    else (result[a] =1)
+    });
+let arr1 = []; 
+
+for (let [key, value] of Object.entries(result)) {
+arr1.push(`${key} :${value} `)};
+let bigArr = [...[arr],...[arr1]];
+
+        let table = document.createElement('table');    
+        let tr = document.createElement('tr');
+
+for (let subArr of bigArr) {
+        let td = document.createElement('td');
+        td.textContent = subArr;
+        tr.appendChild(td);
+      }
+       table.appendChild(tr);  
+      }
+      p.appendChild(table);
+      });
+</script>
+</body>
+</html>
